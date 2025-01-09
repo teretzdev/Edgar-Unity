@@ -10,21 +10,9 @@ public class CustomEditorScript : Editor
     SerializedProperty lockedDoors;
     SerializedProperty enemySpawns;
     SerializedProperty exfils;
-    SerializedProperty playerSpawnPoints;
-    SerializedProperty lootTables;
-    SerializedProperty keys;
-    SerializedProperty lockedDoors;
-    SerializedProperty enemySpawns;
-    SerializedProperty exfils;
 
     private void OnEnable()
     {
-        playerSpawnPoints = serializedObject.FindProperty("playerSpawnPoints");
-        lootTables = serializedObject.FindProperty("lootTables");
-        keys = serializedObject.FindProperty("keys");
-        lockedDoors = serializedObject.FindProperty("lockedDoors");
-        enemySpawns = serializedObject.FindProperty("enemySpawns");
-        exfils = serializedObject.FindProperty("exfils");
         playerSpawnPoints = serializedObject.FindProperty("playerSpawnPoints");
         lootTables = serializedObject.FindProperty("lootTables");
         keys = serializedObject.FindProperty("keys");
@@ -35,12 +23,7 @@ public class CustomEditorScript : Editor
 
     public override void OnInspectorGUI()
     {
-        serializedObject.Update();
-
-        EditorGUILayout.PropertyField(playerSpawnPoints, new GUIContent("Player Spawn Points"));
-        EditorGUILayout.PropertyField(lootTables, new GUIContent("Loot Tables"));
-        EditorGUILayout.PropertyField(keys, new GUIContent("Keys"));
-        EditorGUILayout.PropertyField(lockedDoors, new GUIContent("Locked Doors"));
+        serializedObject.Update();   EditorGUILayout.PropertyField(lockedDoors, new GUIContent("Locked Doors"));
         EditorGUILayout.PropertyField(enemySpawns, new GUIContent("Enemy Spawns"));
         EditorGUILayout.PropertyField(exfils, new GUIContent("Exfils"));
         EditorGUILayout.PropertyField(playerSpawnPoints, new GUIContent("Player Spawn Points"));
