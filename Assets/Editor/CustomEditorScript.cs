@@ -10,8 +10,12 @@ public class CustomEditorScript : Editor
     SerializedProperty lockedDoors;
     SerializedProperty enemySpawns;
     SerializedProperty exfils;
-    SerializedProperty newFeature1; // Example new feature
-    SerializedProperty newFeature2; // Example new feature
+    SerializedProperty playerSpawnPoints;
+    SerializedProperty lootTables;
+    SerializedProperty keys;
+    SerializedProperty lockedDoors;
+    SerializedProperty enemySpawns;
+    SerializedProperty exfils;
 
     private void OnEnable()
     {
@@ -21,8 +25,12 @@ public class CustomEditorScript : Editor
         lockedDoors = serializedObject.FindProperty("lockedDoors");
         enemySpawns = serializedObject.FindProperty("enemySpawns");
         exfils = serializedObject.FindProperty("exfils");
-        newFeature1 = serializedObject.FindProperty("newFeature1");
-        newFeature2 = serializedObject.FindProperty("newFeature2");
+        playerSpawnPoints = serializedObject.FindProperty("playerSpawnPoints");
+        lootTables = serializedObject.FindProperty("lootTables");
+        keys = serializedObject.FindProperty("keys");
+        lockedDoors = serializedObject.FindProperty("lockedDoors");
+        enemySpawns = serializedObject.FindProperty("enemySpawns");
+        exfils = serializedObject.FindProperty("exfils");
     }
 
     public override void OnInspectorGUI()
@@ -35,8 +43,12 @@ public class CustomEditorScript : Editor
         EditorGUILayout.PropertyField(lockedDoors, new GUIContent("Locked Doors"));
         EditorGUILayout.PropertyField(enemySpawns, new GUIContent("Enemy Spawns"));
         EditorGUILayout.PropertyField(exfils, new GUIContent("Exfils"));
-        EditorGUILayout.PropertyField(newFeature1, new GUIContent("New Feature 1"));
-        EditorGUILayout.PropertyField(newFeature2, new GUIContent("New Feature 2"));
+        EditorGUILayout.PropertyField(playerSpawnPoints, new GUIContent("Player Spawn Points"));
+        EditorGUILayout.PropertyField(lootTables, new GUIContent("Loot Tables"));
+        EditorGUILayout.PropertyField(keys, new GUIContent("Keys"));
+        EditorGUILayout.PropertyField(lockedDoors, new GUIContent("Locked Doors"));
+        EditorGUILayout.PropertyField(enemySpawns, new GUIContent("Enemy Spawns"));
+        EditorGUILayout.PropertyField(exfils, new GUIContent("Exfils"));
 
         serializedObject.ApplyModifiedProperties();
     }
