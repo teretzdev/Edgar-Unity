@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,6 +9,15 @@ namespace Edgar.Unity.Editor
     {
         private bool defaultRoomTemplatesFoldout;
         private bool corridorRoomTemplatesFoldout;
+
+        private SerializedProperty newFeature1Property;
+        private SerializedProperty newFeature2Property;
+
+        public void OnEnable()
+        {
+            newFeature1Property = serializedObject.FindProperty("NewFeature1");
+            newFeature2Property = serializedObject.FindProperty("NewFeature2");
+        }
 
         public override void OnInspectorGUI()
         {
@@ -47,6 +56,10 @@ namespace Edgar.Unity.Editor
                     true);
                 EditorGUI.indentLevel--;
             }
+
+            EditorGUILayout.LabelField("New Features", EditorStyles.boldLabel);
+            EditorGUILayout.PropertyField(newFeature1Property, new GUIContent("New Feature 1"));
+            EditorGUILayout.PropertyField(newFeature2Property, new GUIContent("New Feature 2"));
 
             if (GUILayout.Button("Open graph editor"))
             {

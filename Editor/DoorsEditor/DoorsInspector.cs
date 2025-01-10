@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,6 +10,9 @@ namespace Edgar.Unity.Editor
         private HybridDoorModeInspector hybridDoorModeInspector;
         private SimpleDoorModeInspector simpleDoorModeInspector;
         private ManualDoorModeInspector manualDoorModeInspector;
+
+        private SerializedProperty newFeature1Property;
+        private SerializedProperty newFeature2Property;
 
         public void OnEnable()
         {
@@ -26,6 +29,9 @@ namespace Edgar.Unity.Editor
                 serializedObject,
                 doors,
                 serializedObject.FindProperty(nameof(DoorsGrid2D.ManualDoorModeData)));
+
+            newFeature1Property = serializedObject.FindProperty("NewFeature1");
+            newFeature2Property = serializedObject.FindProperty("NewFeature2");
 
             SceneView.RepaintAll();
         }
@@ -68,6 +74,10 @@ namespace Edgar.Unity.Editor
             }, 3);
 
             EditorGUILayout.Space();
+
+            EditorGUILayout.LabelField("New Features", EditorStyles.boldLabel);
+            EditorGUILayout.PropertyField(newFeature1Property, new GUIContent("New Feature 1"));
+            EditorGUILayout.PropertyField(newFeature2Property, new GUIContent("New Feature 2"));
 
             switch (doors.SelectedMode)
             {

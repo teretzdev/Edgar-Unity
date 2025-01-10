@@ -1,4 +1,4 @@
-﻿using UnityEditor;
+using UnityEditor;
 using UnityEngine;
 
 namespace Edgar.Unity.Editor
@@ -10,11 +10,16 @@ namespace Edgar.Unity.Editor
 
         private static bool advancedFoldout = false;
 
+        private SerializedProperty newFeature1Property;
+        private SerializedProperty newFeature2Property;
+
         public void OnEnable()
         {
             customPostProcessTasksList = new ReorderableList(new UnityEditorInternal.ReorderableList(serializedObject,
                 serializedObject.FindProperty(nameof(DungeonGeneratorBaseGrid2D.CustomPostProcessTasks)),
                 true, true, true, true), "Custom post process tasks");
+            newFeature1Property = serializedObject.FindProperty("NewFeature1");
+            newFeature2Property = serializedObject.FindProperty("NewFeature2");
         }
 
         public override void OnInspectorGUI()
@@ -42,6 +47,10 @@ namespace Edgar.Unity.Editor
             {
                 customPostProcessTasksList.DoLayoutList();
             }
+
+            EditorGUILayout.LabelField("New Features", EditorStyles.boldLabel);
+            EditorGUILayout.PropertyField(newFeature1Property, new GUIContent("New Feature 1"));
+            EditorGUILayout.PropertyField(newFeature2Property, new GUIContent("New Feature 2"));
 
             EditorGUILayout.LabelField("Other", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorBaseGrid2D.UseRandomSeed)));

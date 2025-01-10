@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using Edgar.Unity.Diagnostics;
 using UnityEditor;
@@ -14,11 +14,24 @@ namespace Edgar.Unity.Editor
     [CustomEditor(typeof(RoomTemplateSettingsGrid2D))]
     public class RoomTemplateSettingsInspector : UnityEditor.Editor
     {
+        private SerializedProperty newFeature1Property;
+        private SerializedProperty newFeature2Property;
+
+        public void OnEnable()
+        {
+            newFeature1Property = serializedObject.FindProperty("NewFeature1");
+            newFeature2Property = serializedObject.FindProperty("NewFeature2");
+        }
+
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
 
             DrawDefaultInspector();
+
+            EditorGUILayout.LabelField("New Features", EditorStyles.boldLabel);
+            EditorGUILayout.PropertyField(newFeature1Property, new GUIContent("New Feature 1"));
+            EditorGUILayout.PropertyField(newFeature2Property, new GUIContent("New Feature 2"));
 
             var roomTemplate = (RoomTemplateSettingsGrid2D) target;
             var validityCheck = RoomTemplateDiagnostics.CheckAll(roomTemplate.gameObject);
