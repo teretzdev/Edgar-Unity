@@ -16,11 +16,15 @@ namespace Edgar.Unity.Editor
     {
         private SerializedProperty newFeature1Property;
         private SerializedProperty newFeature2Property;
+        private SerializedProperty newFeature3Property;
+        private SerializedProperty newFeature4Property;
 
         public void OnEnable()
         {
             newFeature1Property = serializedObject.FindProperty("NewFeature1");
             newFeature2Property = serializedObject.FindProperty("NewFeature2");
+            newFeature3Property = serializedObject.FindProperty("NewFeature3");
+            newFeature4Property = serializedObject.FindProperty("NewFeature4");
         }
 
         public override void OnInspectorGUI()
@@ -32,6 +36,8 @@ namespace Edgar.Unity.Editor
             EditorGUILayout.LabelField("New Features", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(newFeature1Property, new GUIContent("New Feature 1"));
             EditorGUILayout.PropertyField(newFeature2Property, new GUIContent("New Feature 2"));
+            EditorGUILayout.PropertyField(newFeature3Property, new GUIContent("New Feature 3"));
+            EditorGUILayout.PropertyField(newFeature4Property, new GUIContent("New Feature 4"));
 
             var roomTemplate = (RoomTemplateSettingsGrid2D) target;
             var validityCheck = RoomTemplateDiagnostics.CheckAll(roomTemplate.gameObject);
